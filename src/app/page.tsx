@@ -127,27 +127,27 @@ export default function HeroSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
-        className="mt-16 md:mt-24 mb-16 w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch"
+        className="mt-6 md:-mt-24 mb-16 w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch"
       >
 
         {/* Card 1: 87% */}
         <motion.div variants={itemFadeUp} {...cardHover} className="flex flex-col gap-4 group">
-          <div className="circle bg-gradient-to-br from-[#03842B] to-[#59C173] p-9 flex flex-col justify-between text-white min-h-[300px] md:min-h-[420px] relative overflow-hidden">
+          <div className="circle bg-gradient-to-br from-[#03842B] to-[#59C173] p-10 flex flex-col justify-between text-white min-h-[300px] md:min-h-[420px] relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('/agri/background-green.png')] opacity-10 bg-cover bg-center grayscale group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
             <div className="relative z-10">
-              <p className="text-[60px] md:text-[90px] font-black leading-none drop-shadow-lg">87%</p>
-              <p className="mt-6 text-[15px] leading-[1.5] font-medium opacity-95">
+              <p className="-ml-10 text-[60px] md:text-[90px] font-black leading-none drop-shadow-lg">87%</p>
+              <p className="mt-8 text-[16px] leading-relaxed font-semibold opacity-95 tracking-wide">
                 Agriculture encompasses crop & livestock production, aquaculture, fisheries, and forestry for food and non-food.
               </p>
             </div>
             <button className="relative z-10 bg-white/10 backdrop-blur-xl border border-white/30 rounded-full px-6 py-3 flex items-center justify-between hover:bg-white/30 transition-all w-full group/btn overflow-hidden">
               <span className="font-extrabold text-[15px]">Explore More</span>
-              <div className="w-10 h-10 bg-green-900 rounded-full flex items-center justify-center -mr-2 shadow-lg group-hover/btn:translate-x-1 transition-transform">
+              <div className="w-10 h-10 flex-shrink-0 bg-green-900 rounded-full flex items-center justify-center -mr-2 shadow-lg group-hover/btn:translate-x-1 transition-transform">
                 <RxArrowTopRight className="text-white" size={20} />
               </div>
             </button>
           </div>
-          <div className="bg-[#034016] rounded-[30px] p-7 flex items-center gap-4 border border-green-800 shadow-xl shadow-green-900/10">
+          <div className="bg-[#034016] rounded-[30px] p-5 flex items-center gap-4 border border-green-800 shadow-xl shadow-green-900/10">
             <div className="p-3 bg-green-700/30 rounded-2xl text-green-400 border border-green-600/20">
               <BsAward size={28} />
             </div>
@@ -174,28 +174,25 @@ export default function HeroSection() {
 
         {/* Card 4: Social Media (circle-3) */}
         <motion.div variants={itemFadeUp} {...cardHover} className="flex flex-col gap-4 group justify-end">
-          <div className="circle-3 bg-gradient-to-br from-[#03842B] to-[#2E8B57] p-9 flex flex-col justify-end min-h-[300px] md:min-h-[380px] shadow-lg relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl" />
-            <p className="text-white font-[900] text-[24px] leading-tight mb-10 tracking-tight drop-shadow-md relative z-10">
+          <div className="circle-3 bg-gradient-to-br from-[#03842B] to-[#2E8B57] px-6 pt-9 pb-10 flex flex-col justify-end min-h-[300px] md:min-h-[420px] shadow-lg relative overflow-hidden">
+            <p className="text-white font-[900] text-[24px] leading-tight mb-8 tracking-tight drop-shadow-md relative z-10">
               Connect with us <br /> on social media
             </p>
-            <div className="flex items-center justify-between relative z-10">
-              <div className="flex gap-3">
-                {[FaFacebookF, RiTwitterXFill, FaInstagram].map((Icon, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ y: -5, scale: 1.1 }}
-                    className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl cursor-not-allowed hover:bg-green-50 transition-colors"
-                  >
-                    <Icon size={20} color="black" />
-                  </motion.div>
-                ))}
-              </div>
+            <div className="flex items-center justify-center gap-2.5 relative z-10 w-full">
+              {[FaFacebookF, RiTwitterXFill, FaInstagram].map((Icon, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -5, scale: 1.1, backgroundColor: "rgba(255,255,255,0.4)" }}
+                  className="w-11 h-11 flex-shrink-0 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-colors"
+                >
+                  <Icon size={18} className="text-white" />
+                </motion.div>
+              ))}
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 15 }}
-                className="w-12 h-12 bg-green-950 rounded-full flex justify-center items-center text-white shadow-2xl border border-white/20"
+                className="w-11 h-11 flex-shrink-0 bg-[#D0F0DA] rounded-full flex justify-center items-center text-[#034016] shadow-xl border border-white/30"
               >
-                <RxArrowTopRight size={26} />
+                <RxArrowTopRight size={24} />
               </motion.button>
             </div>
           </div>
@@ -209,13 +206,13 @@ export default function HeroSection() {
             <div className="absolute bottom-6 inset-x-6">
               <button className="bg-black/40 backdrop-blur-2xl border border-white/20 rounded-full px-8 py-3 flex items-center justify-between hover:bg-black/60 active:scale-95 transition-all text-white w-full shadow-2xl">
                 <span className="font-extrabold text-[16px] tracking-wider uppercase">Donate</span>
-                <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center -mr-2 shadow-lg">
+                <div className="w-10 h-10 flex-shrink-0 bg-green-700 rounded-full flex items-center justify-center -mr-2 shadow-lg">
                   <RxArrowTopRight size={22} />
                 </div>
               </button>
             </div>
           </div>
-          <div className="bg-[#034016] rounded-[30px] p-7 flex items-center gap-4 border border-green-800">
+          <div className="bg-[#034016] rounded-[30px] p-5 flex items-center gap-4 border border-green-800">
             <div className="p-3 bg-green-500/20 rounded-xl text-green-400">
               <GoVerified size={28} />
             </div>
