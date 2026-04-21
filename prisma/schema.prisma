@@ -1,0 +1,50 @@
+// Naturalink — MVP schema
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  engineType    = "binary"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id        String   @id @default(uuid())
+  name      String
+  origin    String   @default("Côte d'Ivoire")
+  category  String?
+  createdAt DateTime @default(now())
+
+  batches   Batch[]
+}
+
+model Batch {
+  id         String   @id @default(uuid())
+  productId  String
+  uniqueCode String   @unique @default(uuid())
+  qrCode     String?  @db.Text
+  colorSeed  String?
+  createdAt  DateTime @default(now())
+
+  product Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  events  TraceEvent[]
+
+  @@index([productId])
+}
+
+model TraceEvent {
+  id        String   @id @default(uuid())
+  batchId   String
+  step      String
+  actor     String?
+  location  String?
+  note      String?
+  timestamp DateTime @default(now())
+
+  batch Batch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@index([batchId])
+}

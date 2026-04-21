@@ -14,6 +14,10 @@ export const fr = {
       "Nous créons une transparence éco-responsable qui permet aux consommateurs de faire confiance aux origines et de soutenir l'innovation agricole africaine durable.",
     bookDemo: "Demander une démo",
     watchDemo: "Voir la démo",
+    ctaTrace: "Tracer un produit",
+    ctaTraceSub: "Admin",
+    ctaVerify: "Vérifier un produit",
+    ctaVerifySub: "Client — pour consommateurs",
     stat87Desc:
       "L'agriculture englobe la production végétale et animale, l'aquaculture, la pêche et la sylviculture — pour l'alimentation et au-delà.",
     exploreMore: "En savoir plus",
@@ -145,6 +149,10 @@ export const en: typeof fr = {
       "We create eco-responsible transparency empowering consumers to trust origins and support sustainable African agricultural innovation.",
     bookDemo: "Book a demo",
     watchDemo: "Watch a demo",
+    ctaTrace: "Trace a product",
+    ctaTraceSub: "Producers · Brands · Cooperatives",
+    ctaVerify: "Verify a product",
+    ctaVerifySub: "Consumers",
     stat87Desc:
       "Agriculture encompasses crop and livestock production, aquaculture, fisheries, and forestry — for food and non-food.",
     exploreMore: "Explore more",

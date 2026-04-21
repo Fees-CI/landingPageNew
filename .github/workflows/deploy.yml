@@ -41,6 +41,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy compose file to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.OVH_HOST }}
+          username: ${{ secrets.OVH_USER }}
+          key: ${{ secrets.OVH_SSH_KEY }}
+          source: "docker-compose.prod.yml"
+          target: "/home/ubuntu/naturalink-landing/"
+
       - name: Deploy via SSH to VPS
         uses: appleboy/ssh-action@v1
         with:
@@ -52,18 +64,23 @@ jobs:
             mkdir -p /home/ubuntu/naturalink-landing
             cd /home/ubuntu/naturalink-landing
 
-            # Génération du .env minimal pour Next.js
+            # Generate .env for Next.js runtime + compose variable expansion
             cat > .env << EOF
             NODE_ENV=production
             NEXT_TELEMETRY_DISABLED=1
             DOCKERHUB_IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/naturalink-landing
+            POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+            DATABASE_URL=postgresql://naturalink:${{ secrets.POSTGRES_PASSWORD }}@postgres:5432/naturalink?schema=public
+            NEXT_PUBLIC_URL=${{ secrets.NEXT_PUBLIC_URL }}
             EOF
+            chmod 600 .env
 
-            # Login Docker Hub
+            # Docker Hub login
             echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-            # Pull et redémarrage
+            # Pull latest images and restart
             docker compose -f docker-compose.prod.yml pull
             docker compose -f docker-compose.prod.yml up -d --remove-orphans
 
+            # Prune only unlabeled dangling images
             docker image prune -f --filter "label!=keep"

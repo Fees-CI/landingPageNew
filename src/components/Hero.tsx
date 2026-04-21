@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { RxArrowTopRight, RxPlay } from "react-icons/rx";
+import Link from "next/link";
+import { RxArrowTopRight } from "react-icons/rx";
 import { BsAward } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
@@ -158,21 +159,29 @@ export default function Hero() {
         </div>
 
         {/* CTAs — Full width on mobile, centered row on desktop */}
-        <div className="order-2 lg:order-0 lg:row-start-5 lg:col-start-5 lg:col-span-3 flex flex-col sm:flex-row gap-3 w-full lg:w-auto lg:justify-center lg:items-start lg:pt-5">
-          <a
-            href="#"
-            className="w-full sm:flex-1 lg:w-auto lg:flex-none min-h-12 px-4 bg-[#03842B] rounded-full flex justify-center items-center gap-2"
+        <div className="order-2 lg:order-0 lg:row-start-5 lg:col-start-4 lg:col-span-5 flex flex-col sm:flex-row gap-3 w-full lg:w-auto lg:justify-center lg:items-start lg:pt-5">
+          <Link
+            href="/dashboard"
+            className="w-full sm:flex-1 lg:w-auto lg:flex-none min-h-14 px-6 bg-[#0A2540] rounded-2xl flex flex-col justify-center items-center gap-0.5 transition-transform hover:scale-[1.02]"
           >
-            <span className="text-white text-base font-normal">
-              {t.hero.bookDemo}
+            <span className="text-white text-base font-semibold leading-tight">
+              {t.hero.ctaTrace}
             </span>
-          </a>
-          <button className="w-full sm:flex-1 lg:w-auto lg:flex-none min-h-12 px-4 bg-[#ECFFF2] rounded-full inline-flex items-center justify-center gap-2">
-            <RxPlay className="text-gray-900 text-lg" />
-            <span className="text-gray-900 text-base font-normal">
-              {t.hero.watchDemo}
+            <span className="text-white/60 text-[11px] font-normal leading-tight">
+              {t.hero.ctaTraceSub}
             </span>
-          </button>
+          </Link>
+          <Link
+            href="/scan"
+            className="w-full sm:flex-1 lg:w-auto lg:flex-none min-h-14 px-6 bg-transparent border-2 border-[#0A2540] rounded-2xl flex flex-col justify-center items-center gap-0.5 transition-colors hover:bg-[#0A2540]/5"
+          >
+            <span className="text-[#0A2540] text-base font-semibold leading-tight">
+              {t.hero.ctaVerify}
+            </span>
+            <span className="text-[#0A2540]/60 text-[11px] font-normal leading-tight">
+              {t.hero.ctaVerifySub}
+            </span>
+          </Link>
         </div>
 
         {/* ===== Mobile-only stacked bento ===== */}

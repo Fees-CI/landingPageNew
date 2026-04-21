@@ -1,31 +1,235 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0a2540;
+  --naturalink-night: #0a2540;
+  --naturalink-accent: #00e5a0;
+  --naturalink-highlight: #ff6b00;
+  --naturalink-muted: #64748b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Inter, Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
+a {
+  color: inherit;
+}
 
+.naturalink-card {
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  padding: 24px;
+}
+
+.naturalink-button-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 14px;
+  background: var(--naturalink-accent);
+  color: var(--naturalink-night);
+  font-weight: 600;
+  padding: 0.9rem 1.25rem;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease;
+}
+
+.naturalink-button-primary:hover {
+  box-shadow: 0 16px 30px rgba(0, 229, 160, 0.28);
+  transform: scale(1.03);
+}
+
+.naturalink-button-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.naturalink-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 2px solid var(--naturalink-night);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--naturalink-night);
+  font-weight: 600;
+  padding: 0.82rem 1.2rem;
+  transition:
+    transform 200ms ease,
+    background-color 200ms ease,
+    opacity 200ms ease;
+}
+
+.naturalink-button-secondary:hover {
+  background: rgb(10 37 64 / 0.05);
+  transform: scale(1.02);
+}
+
+.naturalink-button-secondary:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.naturalink-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #0a2540;
+  outline: none;
+  padding: 0.95rem 1rem;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.naturalink-input::placeholder {
+  color: #94a3b8;
+}
+
+.naturalink-input:focus {
+  border-color: var(--naturalink-accent);
+  box-shadow: 0 0 0 4px rgb(0 229 160 / 0.16);
+}
+
+.naturalink-spinner {
+  animation: naturalinkSpin 0.8s linear infinite;
+}
+
+@keyframes naturalinkSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.page-flash {
+  background: rgba(255, 255, 255, 0.96);
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 300ms ease;
+  z-index: 50;
+}
+
+.page-flash.active {
+  opacity: 1;
+}
+
+@keyframes scanLine {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    top: 5%;
+    opacity: 1;
+  }
+  90% {
+    top: 95%;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulseDot {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scan-line {
+  animation: scanLine 2s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, #00e5a0, transparent);
+  box-shadow: 0 0 12px #00e5a0, 0 0 4px rgba(0, 229, 160, 0.6);
+  height: 2px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 11;
+}
+
+.status-dot {
+  animation: pulseDot 1.4s ease-in-out infinite;
+}
+
+#qr-reader {
+  border: none !important;
+  height: 100%;
+  width: 100%;
+}
+
+#qr-reader > div {
+  border: none !important;
+}
+
+#qr-reader video {
+  border-radius: 32px;
+  height: 100% !important;
+  object-fit: cover;
+  width: 100% !important;
+}
+
+#qr-reader__scan_region {
+  border: none !important;
+  min-height: 100% !important;
+}
+
+#qr-reader__scan_region img,
+#qr-reader__dashboard,
+#qr-reader__header_message {
+  display: none !important;
+}
+
+#qr-reader button,
+#qr-reader select,
+#qr-reader a {
+  display: none !important;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 .shape { 
   width: 268px;
