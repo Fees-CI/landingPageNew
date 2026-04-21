@@ -35,12 +35,12 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # Prisma schema + CLI + generated engine for runtime `db push`
+# NOTE: prisma.config.ts NOT copied — CLI uses schema.prisma + DATABASE_URL env directly,
+# avoids loading @prisma/config (which pulls effect/c12/etc. transitive deps).
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
-COPY --from=builder --chown=nextjs:nodejs /app/prisma.config.ts ./prisma.config.ts
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma ./node_modules/prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/dotenv ./node_modules/dotenv
 
 # Runtime Prisma driver (pg) — belt-and-suspenders alongside outputFileTracingIncludes
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/pg ./node_modules/pg
