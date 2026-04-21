@@ -1,0 +1,26 @@
+services:
+  landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ikhe0410/naturalink-landing:latest
+    container_name: naturalink-landing
+    labels:
+      - "keep=true"
+    restart: unless-stopped
+    expose:
+      - "3000"
+    env_file:
+      - .env
+    networks:
+      - connect_impact_network
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3000', r => process.exit(r.statusCode < 500 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+networks:
+  connect_impact_network:
+    driver: bridge

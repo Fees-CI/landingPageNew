@@ -1,0 +1,69 @@
+name: CI/CD Deploy — Naturalink Landing
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  DOCKERHUB_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/naturalink-landing
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          tags: |
+            ${{ env.DOCKERHUB_IMAGE }}:latest
+            ${{ env.DOCKERHUB_IMAGE }}:${{ github.sha }}
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH to VPS
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.OVH_HOST }}
+          username: ${{ secrets.OVH_USER }}
+          key: ${{ secrets.OVH_SSH_KEY }}
+          script: |
+            set -e
+            mkdir -p /home/ubuntu/naturalink-landing
+            cd /home/ubuntu/naturalink-landing
+
+            # Génération du .env minimal pour Next.js
+            cat > .env << EOF
+            NODE_ENV=production
+            NEXT_TELEMETRY_DISABLED=1
+            DOCKERHUB_IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/naturalink-landing
+            EOF
+
+            # Login Docker Hub
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+            # Pull et redémarrage
+            docker compose -f docker-compose.prod.yml pull
+            docker compose -f docker-compose.prod.yml up -d --remove-orphans
+
+            docker image prune -f --filter "label!=keep"
