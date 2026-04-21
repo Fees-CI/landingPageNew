@@ -315,7 +315,7 @@ export default function Hero() {
             <div className="col-start-10 row-span-5 col-span-2 space-y-2">
               <div className="self-end circle-3 circle w-full h-[78%] relative flex items-end justify-center p-2">
                 <Image
-                  src="/agri/sticker-inteligent.png"
+                  src="/agri/sticker-inteligent.jpg"
                   alt="brand-agri"
                   fill
                   className="object-cover"

@@ -44,7 +44,7 @@ services:
 
 networks:
   connect_impact_network:
-    driver: bridge
+   external: true
 
 volumes:
   naturalink_pgdata:
