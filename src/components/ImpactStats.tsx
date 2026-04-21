@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-
-const stats = [
-  { value: 1500, suffix: "+", label: "Agriculteurs certifiés", unit: "" },
-  { value: 10000, suffix: "+", label: "Stickers intelligents actifs", unit: "" },
-  { value: 87, suffix: "%", label: "Taux de traçabilité vérifiée", unit: "" },
-  { value: 12, suffix: "", label: "Pays cibles en Afrique de l'Ouest", unit: "" },
-];
+import { useTranslation } from "@/i18n/I18nProvider";
 
 function useCountUp(target: number, duration = 1600, start = false) {
   const [value, setValue] = useState(0);
@@ -35,12 +29,14 @@ function Stat({
   label,
   trigger,
   highlight,
+  locale,
 }: {
   value: number;
   suffix: string;
   label: string;
   trigger: boolean;
   highlight?: boolean;
+  locale: string;
 }) {
   const n = useCountUp(value, 1600, trigger);
   return (
@@ -69,7 +65,7 @@ function Stat({
           }`}
           style={{ fontSize: "clamp(40px, 7vw, 76px)" }}
         >
-          {n.toLocaleString("fr-FR")}
+          {n.toLocaleString(locale === "fr" ? "fr-FR" : "en-US")}
           {suffix}
         </p>
       </div>
@@ -85,8 +81,16 @@ function Stat({
 }
 
 export default function ImpactStats() {
+  const { t, locale } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+
+  const stats = [
+    { value: 1500, suffix: "+", label: t.impactStats.labelFarmers },
+    { value: 10000, suffix: "+", label: t.impactStats.labelStickers },
+    { value: 87, suffix: "%", label: t.impactStats.labelTraceability },
+    { value: 12, suffix: "", label: t.impactStats.labelCountries },
+  ];
 
   useEffect(() => {
     if (!ref.current) return;
@@ -109,19 +113,18 @@ export default function ImpactStats() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-12">
           <div>
             <p className="text-[#03842B] text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-3">
-              Impact &amp; Chiffres
+              {t.impactStats.kicker}
             </p>
             <h2
               className="font-extrabold text-[#2C2C2C] leading-tight"
               style={{ fontSize: "clamp(28px, 5vw, 48px)" }}
             >
-              La data qui <br className="md:hidden" />
-              <span className="text-[#03842B]">change le terrain.</span>
+              {t.impactStats.title1} <br className="md:hidden" />
+              <span className="text-[#03842B]">{t.impactStats.title2}</span>
             </h2>
           </div>
           <p className="text-[#2C2C2C]/60 max-w-md text-sm md:text-base">
-            Chaque chiffre est un agriculteur, un consommateur, un lot certifié.
-            Voici notre empreinte réelle.
+            {t.impactStats.desc}
           </p>
         </div>
 
@@ -137,6 +140,7 @@ export default function ImpactStats() {
               label={s.label}
               trigger={visible}
               highlight={i === 1}
+              locale={locale}
             />
           ))}
         </div>

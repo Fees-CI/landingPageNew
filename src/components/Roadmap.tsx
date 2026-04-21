@@ -1,43 +1,49 @@
+"use client";
+
 import React from "react";
 import { FiZap, FiTarget, FiGlobe } from "react-icons/fi";
-
-const milestones = [
-  {
-    date: "Q1 2026",
-    title: "Incubation Orange",
-    desc: "Entrée dans le programme Digi Green, structuration produit & gouvernance.",
-    icon: FiZap,
-    status: "current" as const,
-  },
-  {
-    date: "Q3 2026",
-    title: "Lancement Pilote",
-    desc: "Déploiement terrain auprès de 1 500 agriculteurs partenaires.",
-    icon: FiTarget,
-    status: "next" as const,
-  },
-  {
-    date: "2027",
-    title: "Expansion Afrique de l'Ouest",
-    desc: "5 pays cibles, intégration des coopératives régionales.",
-    icon: FiGlobe,
-    status: "future" as const,
-  },
-];
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export default function Roadmap() {
+  const { t } = useTranslation();
+  const r = t.roadmap;
+
+  const milestones = [
+    {
+      date: r.m1Date,
+      title: r.m1Title,
+      desc: r.m1Desc,
+      icon: FiZap,
+      status: "current" as const,
+    },
+    {
+      date: r.m2Date,
+      title: r.m2Title,
+      desc: r.m2Desc,
+      icon: FiTarget,
+      status: "next" as const,
+    },
+    {
+      date: r.m3Date,
+      title: r.m3Title,
+      desc: r.m3Desc,
+      icon: FiGlobe,
+      status: "future" as const,
+    },
+  ];
+
   return (
     <section className="px-4 sm:px-6 md:px-10 lg:px-14 py-12 md:py-20 bg-[#FAFCF7]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10 md:mb-16">
           <p className="text-[#03842B] text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-3">
-            Roadmap
+            {r.kicker}
           </p>
           <h2
             className="font-extrabold text-[#2C2C2C] leading-tight"
             style={{ fontSize: "clamp(28px, 5vw, 48px)" }}
           >
-            Une vision <span className="text-[#03842B]">à long terme.</span>
+            {r.title1} <span className="text-[#03842B]">{r.title2}</span>
           </h2>
         </div>
 
@@ -50,7 +56,7 @@ export default function Roadmap() {
           <div className="md:hidden absolute top-0 bottom-0 left-6 w-[2px] bg-gradient-to-b from-[#03842B] via-[#03842B]/50 to-[#03842B]/10" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {milestones.map((m, i) => {
+            {milestones.map((m) => {
               const Icon = m.icon;
               const isCurrent = m.status === "current";
               return (

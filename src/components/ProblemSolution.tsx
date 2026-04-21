@@ -1,24 +1,31 @@
+"use client";
+
 import React from "react";
-import Image from "next/image";
 import { RxArrowTopRight } from "react-icons/rx";
 import { FiAlertTriangle } from "react-icons/fi";
 import { GoVerified } from "react-icons/go";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export default function ProblemSolution() {
+  const { t } = useTranslation();
+  const ps = t.problemSolution;
+
+  const tags = [ps.tagOpacity, ps.tagFraud, ps.tagLosses, ps.tagDistrust];
+
   return (
     <section className="px-4 sm:px-6 md:px-10 lg:px-14 py-12 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
         <div className="text-center mb-8 md:mb-14">
           <p className="text-[#03842B] text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-3">
-            La Dualité
+            {ps.kicker}
           </p>
           <h2
             className="font-extrabold text-[#2C2C2C] leading-tight"
             style={{ fontSize: "clamp(28px, 5vw, 48px)" }}
           >
-            Du chaos opaque <br className="hidden md:block" />
-            <span className="text-[#03842B]">à la vérité digitale.</span>
+            {ps.title1} <br className="hidden md:block" />
+            <span className="text-[#03842B]">{ps.title2}</span>
           </h2>
         </div>
 
@@ -40,23 +47,21 @@ export default function ProblemSolution() {
                   <FiAlertTriangle className="text-red-400" size={20} />
                 </div>
                 <span className="text-red-400 text-xs font-bold tracking-widest uppercase">
-                  Le Problème
+                  {ps.problemTag}
                 </span>
               </div>
               <h3
                 className="text-white font-extrabold mb-4 leading-tight"
                 style={{ fontSize: "clamp(22px, 3vw, 34px)" }}
               >
-                Chaînes brisées, <br />
-                confiance rompue.
+                {ps.problemTitle1} <br />
+                {ps.problemTitle2}
               </h3>
               <p className="text-white/60 text-sm md:text-base leading-relaxed mb-6">
-                70% des consommateurs africains doutent de l&rsquo;origine de
-                leurs produits. La traçabilité manuelle fragmente les données
-                et fragilise les petits producteurs.
+                {ps.problemDesc}
               </p>
               <div className="mt-auto flex flex-wrap gap-2">
-                {["Opacité", "Fraude", "Pertes", "Défiance"].map((tag) => (
+                {tags.map((tag) => (
                   <span
                     key={tag}
                     className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs"
@@ -68,9 +73,8 @@ export default function ProblemSolution() {
             </div>
           </div>
 
-          {/* Solution Card — overlaps slightly on mobile */}
+          {/* Solution Card */}
           <div className="md:col-span-7 relative overflow-hidden rounded-3xl lg:rounded-[32px] bg-gradient-to-br from-[#03842B] via-[#046b25] to-[#034016] p-6 md:p-8 lg:p-10 min-h-[320px] md:min-h-[460px] -mt-6 md:mt-0 transition-transform duration-300 hover:-translate-y-1 shadow-xl shadow-green-900/20">
-            {/* Decorative glow */}
             <div
               className="absolute inset-0 opacity-40"
               style={{
@@ -85,23 +89,22 @@ export default function ProblemSolution() {
                     <GoVerified className="text-white" size={20} />
                   </div>
                   <span className="text-[#B4FF39] text-xs font-bold tracking-widest uppercase">
-                    La Solution Naturalink
+                    {ps.solutionTag}
                   </span>
                 </div>
                 <h3
                   className="text-white font-extrabold mb-4 leading-tight"
                   style={{ fontSize: "clamp(22px, 3vw, 34px)" }}
                 >
-                  Un scan. <br />
-                  Une vérité. <br />
-                  Mille confiances.
+                  {ps.solutionTitle1} <br />
+                  {ps.solutionTitle2} <br />
+                  {ps.solutionTitle3}
                 </h3>
                 <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
-                  Stickers intelligents + blockchain : chaque produit raconte
-                  son histoire authentique, du champ à l&rsquo;étagère.
+                  {ps.solutionDesc}
                 </p>
                 <button className="inline-flex items-center gap-3 bg-white text-[#03842B] font-bold px-5 py-3 rounded-full min-h-12 hover:bg-[#ECFFF2] transition-colors">
-                  <span>Découvrir</span>
+                  <span>{ps.discover}</span>
                   <span className="w-9 h-9 bg-[#03842B] rounded-full flex items-center justify-center">
                     <RxArrowTopRight className="w-5 h-5 text-white" />
                   </span>

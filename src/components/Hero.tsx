@@ -8,16 +8,24 @@ import { GoVerified } from "react-icons/go";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { useTranslation } from "@/i18n/I18nProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   const baseIconStyle =
     "w-11 h-11 md:w-14 md:h-14 bg-white rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-105";
   const iconSize = 20;
   const iconColor = "black";
 
-  const navLinks = ["Accueil", "Produits", "Blog", "A propos de nous"];
+  const navLinks = [
+    { key: "home", label: t.nav.home },
+    { key: "products", label: t.nav.products },
+    { key: "blog", label: t.nav.blog },
+    { key: "about", label: t.nav.about },
+  ];
 
   return (
     <section className="px-4 sm:px-6 md:px-10 lg:px-14 py-3 bg-white w-full lg:h-screen lg:overflow-hidden">
@@ -41,19 +49,20 @@ export default function Hero() {
         <div className="hidden lg:flex px-5 py-3 bg-[#ECFFF2] rounded-[30px] items-center gap-8 xl:gap-12">
           {navLinks.map((link) => (
             <p
-              key={link}
+              key={link.key}
               className="text-green-950 hover:text-green-700 hover:cursor-pointer text-base font-normal leading-6 tracking-wide whitespace-nowrap"
             >
-              {link}
+              {link.label}
             </p>
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center">
+        {/* Desktop CTA + Language */}
+        <div className="hidden lg:flex items-center gap-3">
+          <LanguageSwitcher variant="compact" />
           <div className="px-5 py-3 bg-[#03842B] rounded-[50px] flex justify-center items-center">
             <p className="text-white text-base font-normal leading-6 tracking-wide">
-              Contactez-nous
+              {t.nav.contact}
             </p>
           </div>
           <div className="w-12 h-12 bg-[#03842B] rounded-full flex justify-center items-center ml-1">
@@ -61,14 +70,17 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Mobile Burger */}
-        <button
-          aria-label="Ouvrir le menu"
-          onClick={() => setMenuOpen(true)}
-          className="lg:hidden w-11 h-11 rounded-full bg-[#ECFFF2] flex items-center justify-center text-green-950"
-        >
-          <HiMenuAlt3 size={24} />
-        </button>
+        {/* Mobile: Language + Burger */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher variant="compact" />
+          <button
+            aria-label={t.nav.openMenu}
+            onClick={() => setMenuOpen(true)}
+            className="w-11 h-11 rounded-full bg-[#ECFFF2] flex items-center justify-center text-green-950"
+          >
+            <HiMenuAlt3 size={24} />
+          </button>
+        </div>
       </header>
 
       {/* ========== MOBILE MENU OVERLAY ========== */}
@@ -88,7 +100,7 @@ export default function Hero() {
               </p>
             </div>
             <button
-              aria-label="Fermer le menu"
+              aria-label={t.nav.closeMenu}
               onClick={() => setMenuOpen(false)}
               className="w-11 h-11 rounded-full bg-[#ECFFF2] flex items-center justify-center"
             >
@@ -99,22 +111,26 @@ export default function Hero() {
           <nav className="flex flex-col gap-6 flex-1">
             {navLinks.map((link) => (
               <a
-                key={link}
+                key={link.key}
                 href="#"
                 className="text-green-950 text-2xl font-medium"
                 onClick={() => setMenuOpen(false)}
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </nav>
+
+          <div className="mb-6 flex justify-center">
+            <LanguageSwitcher variant="full" />
+          </div>
 
           <a
             href="#"
             className="mt-auto w-full min-h-14 bg-[#03842B] rounded-full flex justify-center items-center gap-3 px-6"
           >
             <span className="text-white text-lg font-medium">
-              Contactez-nous
+              {t.nav.contact}
             </span>
             <span className="w-11 h-11 bg-white/15 rounded-full flex justify-center items-center">
               <RxArrowTopRight size={22} className="text-white" />
@@ -131,15 +147,13 @@ export default function Hero() {
             className="w-full lg:w-[85%] text-center font-extrabold leading-[1.1]"
             style={{ fontSize: "clamp(28px, 8vw, 60px)" }}
           >
-            Digital Truth Transforming Africa&rsquo;s Agricultural Future
+            {t.hero.title}
           </h1>
           <p
             className="w-full sm:w-[80%] lg:w-[50%] text-center font-light"
             style={{ fontSize: "clamp(14px, 2.5vw, 18px)" }}
           >
-            We create eco responsible transparency empowering consumers to
-            trust origins and support sustainable African agricultural
-            innovation.
+            {t.hero.subtitle}
           </p>
         </div>
 
@@ -150,13 +164,13 @@ export default function Hero() {
             className="w-full sm:flex-1 lg:w-auto lg:flex-none min-h-12 px-4 bg-[#03842B] rounded-full flex justify-center items-center gap-2"
           >
             <span className="text-white text-base font-normal">
-              Book a Demo
+              {t.hero.bookDemo}
             </span>
           </a>
           <button className="w-full sm:flex-1 lg:w-auto lg:flex-none min-h-12 px-4 bg-[#ECFFF2] rounded-full inline-flex items-center justify-center gap-2">
             <RxPlay className="text-gray-900 text-lg" />
             <span className="text-gray-900 text-base font-normal">
-              Watch a Demo
+              {t.hero.watchDemo}
             </span>
           </button>
         </div>
@@ -180,13 +194,12 @@ export default function Hero() {
                   87%
                 </p>
                 <p className="text-[15px] text-white mt-2">
-                  Agriculture encompasses crop and livestock production,
-                  aquaculture, fisheries, and forestry for food and non-food.
+                  {t.hero.stat87Desc}
                 </p>
               </div>
               <button className="w-fit backdrop-blur-sm bg-white/20 border border-white/20 rounded-full pl-5 pr-2 py-1.5 inline-flex items-center gap-3">
                 <span className="text-white text-[15px] font-bold">
-                  Explore More
+                  {t.hero.exploreMore}
                 </span>
                 <span className="w-11 h-11 bg-[#03842B] rounded-full flex items-center justify-center">
                   <RxArrowTopRight className="w-5 h-5 text-white" />
@@ -204,11 +217,7 @@ export default function Hero() {
               className="object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 to-transparent p-5">
-              <p className="text-white text-[15px]">
-                Insuring a climate resilience future for farmers by providing
-                insurance &amp; technology to protect and improve their
-                livelihoods.
-              </p>
+              <p className="text-white text-[15px]">{t.hero.farmerCard}</p>
             </div>
           </div>
 
@@ -216,15 +225,11 @@ export default function Hero() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="flex justify-center items-center rounded-3xl bg-[#034016] p-4 gap-3 min-h-[72px]">
               <BsAward size={28} className="text-white shrink-0" />
-              <p className="text-white text-sm">
-                +1500 Farmers Ready For Certification
-              </p>
+              <p className="text-white text-sm">{t.hero.badgeFarmers}</p>
             </div>
             <div className="flex justify-center items-center rounded-3xl bg-[#034016] p-4 gap-3 min-h-[72px]">
               <GoVerified size={28} className="text-white shrink-0" />
-              <p className="text-white text-sm">
-                +10000 Intelligent Sticker Available
-              </p>
+              <p className="text-white text-sm">{t.hero.badgeStickers}</p>
             </div>
           </div>
 
@@ -238,7 +243,7 @@ export default function Hero() {
             />
             <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
               <p className="text-white text-lg font-bold max-w-[200px]">
-                Connect with us on social media
+                {t.hero.socialTitle}
               </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
@@ -278,14 +283,12 @@ export default function Hero() {
                       87%
                     </p>
                     <p className="text-[15px] text-white mt-2">
-                      Agriculture encompasses crop and livestock production,
-                      aquaculture, fisheries, and forestry for food and
-                      non-food
+                      {t.hero.stat87Desc}
                     </p>
                   </div>
                   <button className="w-fit backdrop-blur-sm bg-white/20 border border-white/20 rounded-full pl-5 pr-2.5 py-1.5 inline-flex items-center gap-4">
                     <span className="text-white text-[16px] font-bold">
-                      Explore More
+                      {t.hero.exploreMore}
                     </span>
                     <div className="w-10 h-10 bg-[#03842B] rounded-full flex items-center justify-center">
                       <RxArrowTopRight className="w-5 h-5 text-white" />
@@ -295,9 +298,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-center items-center rounded-[26px] w-full h-[20%] bg-[#034016] p-3.5 gap-2">
                 <BsAward size={32} className="text-white shrink-0" />
-                <p className="w-[80%] text-white">
-                  +1500 Farmers Ready For Certification
-                </p>
+                <p className="w-[80%] text-white">{t.hero.badgeFarmers}</p>
               </div>
             </div>
 
@@ -311,7 +312,7 @@ export default function Hero() {
                   className="object-cover"
                 />
                 <button className="px-6 py-2 backdrop-blur-sm bg-white/12 text-white font-semibold rounded-full border border-white/12 inline-flex items-center space-x-12">
-                  <span className="text-[18px] font-bold">Donate</span>
+                  <span className="text-[18px] font-bold">{t.hero.donate}</span>
                   <div className="w-12 h-12 bg-[#03842B] rounded-full flex justify-center items-center">
                     <RxArrowTopRight size={24} className="text-white" />
                   </div>
@@ -319,9 +320,7 @@ export default function Hero() {
               </div>
               <div className="flex justify-center items-center rounded-[26px] w-full h-[20%] bg-[#034016] p-6 gap-2">
                 <GoVerified size={32} className="text-white shrink-0" />
-                <p className="w-[80%] text-white">
-                  +10000 Intelligent Sticker Available
-                </p>
+                <p className="w-[80%] text-white">{t.hero.badgeStickers}</p>
               </div>
             </div>
 
@@ -335,11 +334,7 @@ export default function Hero() {
                   className="object-cover"
                 />
                 <div className="absolute bottom-0 left-0 w-full bg-linear-to-t from-black/70 to-transparent p-4">
-                  <p className="text-white text-[18px]">
-                    Insuring a climate resilience future for farmers by
-                    providing insurance &amp; technology to protect and
-                    improve their livelihoods.
-                  </p>
+                  <p className="text-white text-[18px]">{t.hero.farmerCard}</p>
                 </div>
               </div>
               <div className="self-end circle-2 relative w-[30%] h-[80%]">
@@ -360,7 +355,7 @@ export default function Hero() {
                 <div className="p-4 self-end absolute">
                   <div className="mb-8 flex items-center justify-center p-4">
                     <p className="text-[22px] font-bold w-[180px] h-[73px] text-white">
-                      Connect with us on social media
+                      {t.hero.socialTitle}
                     </p>
                   </div>
                   <div className="flex items-center justify-between">

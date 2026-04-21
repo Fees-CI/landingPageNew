@@ -1,0 +1,264 @@
+export const fr = {
+  nav: {
+    home: "Accueil",
+    products: "Produits",
+    blog: "Blog",
+    about: "À propos",
+    contact: "Contactez-nous",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
+  },
+  hero: {
+    title: "La vérité numérique qui transforme l'avenir agricole de l'Afrique",
+    subtitle:
+      "Nous créons une transparence éco-responsable qui permet aux consommateurs de faire confiance aux origines et de soutenir l'innovation agricole africaine durable.",
+    bookDemo: "Demander une démo",
+    watchDemo: "Voir la démo",
+    stat87Desc:
+      "L'agriculture englobe la production végétale et animale, l'aquaculture, la pêche et la sylviculture — pour l'alimentation et au-delà.",
+    exploreMore: "En savoir plus",
+    donate: "Soutenir",
+    farmerCard:
+      "Assurer un avenir résilient face au climat pour les agriculteurs, grâce à l'assurance et à la technologie.",
+    badgeFarmers: "+1 500 agriculteurs prêts pour la certification",
+    badgeStickers: "+10 000 stickers intelligents disponibles",
+    socialTitle: "Retrouvez-nous sur les réseaux sociaux",
+  },
+  social: {
+    trust: "Ils nous font confiance",
+    partner: "Partenaire",
+    digiGreen: "Membre de Digi Green by Orange",
+  },
+  problemSolution: {
+    kicker: "La Dualité",
+    title1: "Du chaos opaque",
+    title2: "à la vérité digitale.",
+    problemTag: "Le Problème",
+    problemTitle1: "Chaînes brisées,",
+    problemTitle2: "confiance rompue.",
+    problemDesc:
+      "70 % des consommateurs africains doutent de l'origine de leurs produits. La traçabilité manuelle fragmente les données et fragilise les petits producteurs.",
+    tagOpacity: "Opacité",
+    tagFraud: "Fraude",
+    tagLosses: "Pertes",
+    tagDistrust: "Défiance",
+    solutionTag: "La Solution Naturalink",
+    solutionTitle1: "Un scan.",
+    solutionTitle2: "Une vérité.",
+    solutionTitle3: "Mille confiances.",
+    solutionDesc:
+      "Stickers intelligents + blockchain : chaque produit raconte son histoire authentique, du champ à l'étagère.",
+    discover: "Découvrir",
+  },
+  howItWorks: {
+    kicker: "Comment ça marche ?",
+    title1: "3 étapes.",
+    title2: "0 doute.",
+    step: "ÉTAPE",
+    step1Title: "Capture",
+    step1Desc:
+      "Scannez le sticker intelligent sur le produit avec votre smartphone.",
+    step2Title: "Analyse",
+    step2Desc:
+      "Notre IA vérifie les données blockchain liées à la parcelle et au lot.",
+    step3Title: "Vérité",
+    step3Desc:
+      "Recevez un certificat vert, authentique et traçable, en 3 secondes.",
+  },
+  impactStats: {
+    kicker: "Impact & Chiffres",
+    title1: "La data qui",
+    title2: "change le terrain.",
+    desc: "Chaque chiffre est un agriculteur, un consommateur, un lot certifié. Voici notre empreinte réelle.",
+    labelFarmers: "Agriculteurs certifiés",
+    labelStickers: "Stickers intelligents actifs",
+    labelTraceability: "Taux de traçabilité vérifiée",
+    labelCountries: "Pays cibles en Afrique de l'Ouest",
+  },
+  roadmap: {
+    kicker: "Roadmap",
+    title1: "Une vision",
+    title2: "à long terme.",
+    m1Date: "Q1 2026",
+    m1Title: "Incubation Orange",
+    m1Desc:
+      "Entrée dans le programme Digi Green, structuration produit & gouvernance.",
+    m2Date: "Q3 2026",
+    m2Title: "Lancement pilote",
+    m2Desc:
+      "Déploiement terrain auprès de 1 500 agriculteurs partenaires.",
+    m3Date: "2027",
+    m3Title: "Expansion Afrique de l'Ouest",
+    m3Desc:
+      "5 pays cibles, intégration des coopératives régionales.",
+  },
+  footer: {
+    ctaKicker: "Passons à l'action",
+    ctaTitle1: "Prêt à digitaliser",
+    ctaTitle2: "votre chaîne",
+    ctaTitle3: "de valeur ?",
+    ctaRequest: "Demander une démo",
+    ctaContact: "Nous contacter",
+    brandDesc:
+      "La vérité numérique au service de l'agriculture africaine. De la parcelle à l'étagère : traçabilité, confiance, durabilité.",
+    colNav: "Navigation",
+    colLegal: "Légal",
+    colNewsletter: "Newsletter",
+    navHome: "Accueil",
+    navProducts: "Produits",
+    navTech: "Technologie",
+    navBlog: "Blog",
+    navAbout: "À propos",
+    legalMentions: "Mentions légales",
+    legalGdpr: "Politique RGPD",
+    legalCgu: "CGU",
+    legalCookies: "Cookies",
+    legalSecurity: "Sécurité",
+    newsletterText:
+      "Recevez notre guide AgriTech 2026 et nos insights mensuels.",
+    newsletterPlaceholder: "votre@email.com",
+    newsletterSubmit: "S'inscrire",
+    newsletterNoSpam: "Aucun spam. Désinscription en 1 clic.",
+    copyright: "© 2026 Naturalink. Tous droits réservés.",
+    member: "Membre de Digi Green by Orange",
+  },
+  language: {
+    label: "Langue",
+    fr: "Français",
+    en: "English",
+  },
+};
+
+export const en: typeof fr = {
+  nav: {
+    home: "Home",
+    products: "Products",
+    blog: "Blog",
+    about: "About",
+    contact: "Contact us",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+  },
+  hero: {
+    title: "Digital truth transforming Africa's agricultural future",
+    subtitle:
+      "We create eco-responsible transparency empowering consumers to trust origins and support sustainable African agricultural innovation.",
+    bookDemo: "Book a demo",
+    watchDemo: "Watch a demo",
+    stat87Desc:
+      "Agriculture encompasses crop and livestock production, aquaculture, fisheries, and forestry — for food and non-food.",
+    exploreMore: "Explore more",
+    donate: "Donate",
+    farmerCard:
+      "Insuring a climate-resilient future for farmers by providing insurance and technology.",
+    badgeFarmers: "+1,500 farmers ready for certification",
+    badgeStickers: "+10,000 intelligent stickers available",
+    socialTitle: "Connect with us on social media",
+  },
+  social: {
+    trust: "Trusted by",
+    partner: "Partner",
+    digiGreen: "Member of Digi Green by Orange",
+  },
+  problemSolution: {
+    kicker: "The Duality",
+    title1: "From opaque chaos",
+    title2: "to digital truth.",
+    problemTag: "The Problem",
+    problemTitle1: "Broken chains,",
+    problemTitle2: "shattered trust.",
+    problemDesc:
+      "70% of African consumers doubt the origin of their products. Manual traceability fragments data and weakens smallholder farmers.",
+    tagOpacity: "Opacity",
+    tagFraud: "Fraud",
+    tagLosses: "Losses",
+    tagDistrust: "Distrust",
+    solutionTag: "The Naturalink Solution",
+    solutionTitle1: "One scan.",
+    solutionTitle2: "One truth.",
+    solutionTitle3: "Thousands of trusts.",
+    solutionDesc:
+      "Smart stickers + blockchain: every product tells its authentic story, from field to shelf.",
+    discover: "Discover",
+  },
+  howItWorks: {
+    kicker: "How it works?",
+    title1: "3 steps.",
+    title2: "0 doubt.",
+    step: "STEP",
+    step1Title: "Capture",
+    step1Desc:
+      "Scan the intelligent sticker on the product with your smartphone.",
+    step2Title: "Analysis",
+    step2Desc:
+      "Our AI verifies blockchain data linked to the plot and batch.",
+    step3Title: "Truth",
+    step3Desc:
+      "Receive a green, authentic and traceable certificate — in 3 seconds.",
+  },
+  impactStats: {
+    kicker: "Impact & Numbers",
+    title1: "The data that",
+    title2: "changes the field.",
+    desc: "Each number is a farmer, a consumer, a certified batch. Here is our real footprint.",
+    labelFarmers: "Certified farmers",
+    labelStickers: "Active smart stickers",
+    labelTraceability: "Verified traceability rate",
+    labelCountries: "Target countries in West Africa",
+  },
+  roadmap: {
+    kicker: "Roadmap",
+    title1: "A long-term",
+    title2: "vision.",
+    m1Date: "Q1 2026",
+    m1Title: "Orange Incubation",
+    m1Desc:
+      "Entry into the Digi Green program, product & governance structuring.",
+    m2Date: "Q3 2026",
+    m2Title: "Pilot Launch",
+    m2Desc: "Field deployment with 1,500 partner farmers.",
+    m3Date: "2027",
+    m3Title: "West Africa Expansion",
+    m3Desc:
+      "5 target countries, integration of regional cooperatives.",
+  },
+  footer: {
+    ctaKicker: "Let's take action",
+    ctaTitle1: "Ready to digitize",
+    ctaTitle2: "your value",
+    ctaTitle3: "chain?",
+    ctaRequest: "Request a demo",
+    ctaContact: "Contact us",
+    brandDesc:
+      "Digital truth for African agriculture. From the plot to the shelf: traceability, trust, sustainability.",
+    colNav: "Navigation",
+    colLegal: "Legal",
+    colNewsletter: "Newsletter",
+    navHome: "Home",
+    navProducts: "Products",
+    navTech: "Technology",
+    navBlog: "Blog",
+    navAbout: "About",
+    legalMentions: "Legal notice",
+    legalGdpr: "GDPR policy",
+    legalCgu: "Terms of use",
+    legalCookies: "Cookies",
+    legalSecurity: "Security",
+    newsletterText:
+      "Receive our AgriTech 2026 guide and our monthly insights.",
+    newsletterPlaceholder: "your@email.com",
+    newsletterSubmit: "Subscribe",
+    newsletterNoSpam: "No spam. One-click unsubscribe.",
+    copyright: "© 2026 Naturalink. All rights reserved.",
+    member: "Member of Digi Green by Orange",
+  },
+  language: {
+    label: "Language",
+    fr: "Français",
+    en: "English",
+  },
+};
+
+export const dictionaries = { fr, en };
+export type Locale = keyof typeof dictionaries;
+export type Dictionary = typeof fr;

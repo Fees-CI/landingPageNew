@@ -1,25 +1,29 @@
-import React from "react";
-import Image from "next/image";
+"use client";
 
-const partners = [
-  { name: "Orange Digi Green", featured: true },
-  { name: "AgriTech Africa" },
-  { name: "GreenChain" },
-  { name: "FarmVerify" },
-  { name: "EcoTrust" },
-];
+import React from "react";
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export default function SocialProof() {
+  const { t } = useTranslation();
+
+  const partners = [
+    { name: "Orange Digi Green", featured: true },
+    { name: "AgriTech Africa" },
+    { name: "GreenChain" },
+    { name: "FarmVerify" },
+    { name: "EcoTrust" },
+  ];
+
   return (
     <section className="px-4 sm:px-6 md:px-10 lg:px-14 py-10 md:py-16 bg-white">
       <div className="max-w-7xl mx-auto">
         <p className="text-center text-sm md:text-base text-[#2C2C2C]/60 uppercase tracking-[0.2em] mb-6 md:mb-10">
-          Ils nous font confiance
+          {t.social.trust}
         </p>
 
         {/* Desktop: row of 3 with featured center */}
         <div className="hidden md:grid grid-cols-3 gap-4 lg:gap-6">
-          {[partners[1], partners[0], partners[2]].map((p, i) => (
+          {[partners[1], partners[0], partners[2]].map((p) => (
             <div
               key={p.name}
               className={`group relative rounded-3xl lg:rounded-[32px] p-6 lg:p-8 min-h-[140px] flex items-center justify-center transition-transform duration-300 hover:-translate-y-1 ${
@@ -30,7 +34,7 @@ export default function SocialProof() {
             >
               {p.featured && (
                 <div className="absolute top-3 right-3 bg-[#FF7900] text-white text-[10px] font-bold tracking-wider px-2 py-1 rounded-full uppercase">
-                  Partenaire
+                  {t.social.partner}
                 </div>
               )}
               <div className="flex flex-col items-center gap-2">
@@ -53,9 +57,7 @@ export default function SocialProof() {
                   {p.name}
                 </p>
                 {p.featured && (
-                  <p className="text-xs text-white/70">
-                    Member of Digi Green by Orange
-                  </p>
+                  <p className="text-xs text-white/70">{t.social.digiGreen}</p>
                 )}
               </div>
             </div>
@@ -87,7 +89,7 @@ export default function SocialProof() {
               <p className="font-bold">{p.name}</p>
               {p.featured && (
                 <p className="text-[11px] text-white/70 text-center">
-                  Member of Digi Green by Orange
+                  {t.social.digiGreen}
                 </p>
               )}
             </div>

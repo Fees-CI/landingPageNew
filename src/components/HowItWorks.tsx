@@ -1,52 +1,58 @@
+"use client";
+
 import React from "react";
 import { LuScanLine } from "react-icons/lu";
 import { TbChartDonutFilled } from "react-icons/tb";
 import { GoVerified } from "react-icons/go";
-
-const steps = [
-  {
-    n: "01",
-    title: "Capture",
-    desc: "Scannez le sticker intelligent sur le produit avec votre smartphone.",
-    icon: LuScanLine,
-    bg: "bg-[#ECFFF2]",
-    text: "text-[#034016]",
-    accent: "bg-[#03842B]",
-  },
-  {
-    n: "02",
-    title: "Analyse",
-    desc: "Notre IA vérifie les données blockchain liées à la parcelle et au lot.",
-    icon: TbChartDonutFilled,
-    bg: "bg-gradient-to-br from-[#03842B] to-[#034016]",
-    text: "text-white",
-    accent: "bg-[#B4FF39]",
-  },
-  {
-    n: "03",
-    title: "Vérité",
-    desc: "Recevez un certificat vert, authentique et traçable, en 3 secondes.",
-    icon: GoVerified,
-    bg: "bg-[#ECFFF2]",
-    text: "text-[#034016]",
-    accent: "bg-[#03842B]",
-  },
-];
+import { useTranslation } from "@/i18n/I18nProvider";
 
 export default function HowItWorks() {
+  const { t } = useTranslation();
+  const h = t.howItWorks;
+
+  const steps = [
+    {
+      n: "01",
+      title: h.step1Title,
+      desc: h.step1Desc,
+      icon: LuScanLine,
+      bg: "bg-[#ECFFF2]",
+      text: "text-[#034016]",
+      accent: "bg-[#03842B]",
+    },
+    {
+      n: "02",
+      title: h.step2Title,
+      desc: h.step2Desc,
+      icon: TbChartDonutFilled,
+      bg: "bg-gradient-to-br from-[#03842B] to-[#034016]",
+      text: "text-white",
+      accent: "bg-[#B4FF39]",
+    },
+    {
+      n: "03",
+      title: h.step3Title,
+      desc: h.step3Desc,
+      icon: GoVerified,
+      bg: "bg-[#ECFFF2]",
+      text: "text-[#034016]",
+      accent: "bg-[#03842B]",
+    },
+  ];
+
   return (
     <section className="px-4 sm:px-6 md:px-10 lg:px-14 py-12 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-8 md:mb-14">
           <p className="text-[#03842B] text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-3">
-            Comment ça marche ?
+            {h.kicker}
           </p>
           <h2
             className="font-extrabold text-[#2C2C2C] leading-tight"
             style={{ fontSize: "clamp(28px, 5vw, 48px)" }}
           >
-            3 étapes. <span className="text-[#03842B]">0 doute.</span>
+            {h.title1} <span className="text-[#03842B]">{h.title2}</span>
           </h2>
         </div>
 
@@ -66,7 +72,7 @@ export default function HowItWorks() {
 
                 <div className="flex items-start justify-between relative z-10">
                   <span className="text-xs font-bold tracking-widest opacity-60">
-                    ÉTAPE {step.n}
+                    {h.step} {step.n}
                   </span>
                   <div
                     className={`w-12 h-12 rounded-full ${step.accent} flex items-center justify-center`}
