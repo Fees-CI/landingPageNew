@@ -13,6 +13,9 @@ RUN apk add --no-cache openssl
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+# Dummy DATABASE_URL for build-time schema validation only — never connects.
+# Real URL is injected at runtime via docker-compose env_file.
+ENV DATABASE_URL="postgresql://dummy:dummy@dummy:5432/dummy?schema=public"
 RUN npx prisma generate
 RUN npm run build
 
