@@ -9,7 +9,7 @@ export const fr = {
     closeMenu: "Fermer le menu",
   },
   hero: {
-    title: "La vérité numérique qui transforme l'avenir agricole de l'Afrique",
+    title: "Le label intelligent qui transforme l'avenir agricole de l'Afrique",
     subtitle:
       "Nous créons une transparence éco-responsable qui permet aux consommateurs de faire confiance aux origines et de soutenir l'innovation agricole africaine durable.",
     bookDemo: "Demander une démo",

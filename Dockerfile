@@ -49,4 +49,4 @@ COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.prisma ./node_modul
 RUN chown -R nextjs:nodejs /app/node_modules
 USER nextjs
 EXPOSE 3000
-CMD ["sh", "-c", "npx prisma db push --skip-generate && npx next start"]
+CMD ["sh", "-c", "npx prisma db push && npx next start"]
