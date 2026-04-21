@@ -44,4 +44,4 @@ COPY --from=builder --chown=nextjs:nodejs /app/node_modules/dotenv ./node_module
 
 USER nextjs
 EXPOSE 3000
-CMD ["sh", "-c", "node_modules/.bin/prisma db push --skip-generate && node server.js"]
+CMD ["sh", "-c", "node node_modules/prisma/build/index.js db push --skip-generate && node server.js"]
