@@ -2,7 +2,7 @@ name: CI/CD Deploy — Naturalink Landing
 
 on:
   push:
-    branches: [main]
+    branches: [stable]
   workflow_dispatch:
 
 env:
