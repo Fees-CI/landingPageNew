@@ -43,10 +43,10 @@ export default async function CertifiedProducts() {
     <section className="bg-white px-4 py-20 sm:px-6 lg:px-14">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 max-w-2xl">
-          <h2 className="text-[32px] font-bold leading-tight text-[#0A2540]">
+          <h2 className="text-[32px] font-bold leading-tight text-[#034016]">
             Produits certifiés
           </h2>
-          <p className="mt-2 text-base text-[#64748B]">
+          <p className="mt-2 text-base text-green-900/70">
             Tracés et vérifiables en temps réel
           </p>
         </div>
@@ -56,7 +56,7 @@ export default async function CertifiedProducts() {
             <Link
               key={item.id}
               href={`/track/${item.uniqueCode}`}
-              className="group flex w-[200px] shrink-0 flex-col rounded-2xl border border-[#F1F5F9] bg-white p-4 shadow-sm transition-colors hover:border-[#00E5A0]"
+              className="group flex w-[200px] shrink-0 flex-col rounded-2xl border border-[#E6F4EA] bg-white p-4 shadow-sm transition-colors hover:border-[#03842B]"
             >
               <div className="mx-auto">
                 <StyledQR
@@ -66,26 +66,26 @@ export default async function CertifiedProducts() {
                 />
               </div>
 
-              <p className="mt-3 line-clamp-2 text-[15px] font-semibold text-[#0A2540]">
+              <p className="mt-3 line-clamp-2 text-[15px] font-semibold text-[#034016]">
                 {item.productName}
               </p>
 
               {item.category ? (
-                <span className="mt-2 inline-flex w-fit items-center rounded-full bg-[#F0FFF4] px-2.5 py-0.5 text-[12px] font-medium text-[#16A34A]">
+                <span className="mt-2 inline-flex w-fit items-center rounded-full bg-[#ECFFF2] px-2.5 py-0.5 text-[12px] font-medium text-[#03842B]">
                   {item.category}
                 </span>
               ) : null}
 
-              <p className="mt-2 text-[12px] text-[#64748B]">
+              <p className="mt-2 text-[12px] text-green-900/60">
                 🇨🇮 {item.origin}
               </p>
 
-              <p className="mt-1 text-[12px] font-semibold text-[#00B183]">
+              <p className="mt-1 text-[12px] font-semibold text-[#03842B]">
                 {item.eventCount} étape{item.eventCount > 1 ? "s" : ""} · Vérifié
                 ✓
               </p>
 
-              <span className="mt-3 inline-flex items-center text-[13px] font-medium text-[#0A2540] group-hover:underline">
+              <span className="mt-3 inline-flex items-center text-[13px] font-medium text-[#034016] group-hover:underline">
                 Voir →
               </span>
             </Link>
